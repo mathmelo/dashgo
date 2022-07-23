@@ -18,6 +18,7 @@ import {
 
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
+import Pagination from '../../components/Pagination';
 
 const UserList: NextPage = () => {
   return (
@@ -88,6 +89,8 @@ const UserList: NextPage = () => {
               </Tr>
             </Tbody>
           </Table>
+
+          <Pagination />
         </Box>
       </Flex>
     </Box>
