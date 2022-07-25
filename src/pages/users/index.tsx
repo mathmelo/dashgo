@@ -14,13 +14,20 @@ import {
   Th,
   Td,
   Tr,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import Pagination from '../../components/Pagination';
+import UserTableList from '../../components/UserTableList';
 
 const UserList: NextPage = () => {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Box>
       <Header />
@@ -45,50 +52,7 @@ const UserList: NextPage = () => {
             </Button>
           </Flex>
 
-          <Table colorScheme="whiteAlpha">
-            {/**HEAD */}
-            <Thead>
-              <Tr>
-                <Th px="6" color="gray.300" width="8">
-                  <Checkbox colorScheme="pink" />
-                </Th>
-                <Th>Usuário</Th>
-                <Th>Data de cadastro</Th>
-                <Th width="8"></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                {/**CHECKBOX */}
-                <Td px="6">
-                  <Checkbox colorScheme="pink" />
-                </Td>
-                {/**NOME E EMAIL */}
-                <Td>
-                  <Box>
-                    <Text fontWeight="bold">Matheus Melo</Text>
-                    <Text fontSize="sm" color="gray.300">
-                      temporary@email.com
-                    </Text>
-                  </Box>
-                </Td>
-                {/**DATA */}
-                <Td>22 de Agosto, 2022</Td>
-                {/**EDITAR */}
-                <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="blue"
-                    leftIcon={<Icon as={RiPencilLine} />}
-                  >
-                    Editar
-                  </Button>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
+          <UserTableList />
 
           <Pagination />
         </Box>
