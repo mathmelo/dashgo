@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useContext } from 'react';
+import { createContext, ReactNode, useContext, useEffect } from 'react';
 import { useDisclosure, UseDisclosureReturn } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 interface ISidebarContextProviderProps {
   children: ReactNode;
@@ -13,6 +14,11 @@ export const SidebarContextProvider = ({
   children,
 }: ISidebarContextProviderProps) => {
   const disclosure = useDisclosure();
+  const router = useRouter();
+
+  useEffect(() => {
+    disclosure.onClose();
+  }, [router.asPath]);
 
   return (
     <SidebarDrawerContext.Provider value={disclosure}>
