@@ -1,33 +1,14 @@
 import { NextPage } from 'next';
-import { RiAddLine, RiPencilLine } from 'react-icons/ri';
-import {
-  Flex,
-  Box,
-  Text,
-  Icon,
-  Heading,
-  Button,
-  Checkbox,
-  Table,
-  Tbody,
-  Thead,
-  Th,
-  Td,
-  Tr,
-  useBreakpointValue,
-} from '@chakra-ui/react';
+import { RiAddLine } from 'react-icons/ri';
+import { Flex, Box, Icon, Heading, Button } from '@chakra-ui/react';
 
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import Pagination from '../../components/Pagination';
 import UserTableList from '../../components/UserTableList';
+import Link from 'next/link';
 
 const UserList: NextPage = () => {
-  const isWideVersion = useBreakpointValue({
-    base: false,
-    lg: true,
-  });
-
   return (
     <Box>
       <Header />
@@ -41,15 +22,17 @@ const UserList: NextPage = () => {
               Usuários
             </Heading>
 
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-            >
-              Criar Novo
-            </Button>
+            <Link href="/users/create" passHref>
+              <Button
+                as="a"
+                size="sm"
+                fontSize="sm"
+                colorScheme="pink"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              >
+                Criar Novo
+              </Button>
+            </Link>
           </Flex>
 
           <UserTableList />

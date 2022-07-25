@@ -41,7 +41,7 @@ const options: ApexOptions = {
       '2021-03-21T00:00:00.000Z',
       '2021-03-22T00:00:00.000Z',
       '2021-03-23T00:00:00.000Z',
-      '2021-03-23T00:00:00.000Z',
+      '2021-03-24T00:00:00.000Z',
     ],
   },
   fill: {
@@ -57,8 +57,8 @@ const options: ApexOptions = {
 
 const series = [
   {
-    name: 'series-1',
-    data: [5, 40, 15, 90, 20, 65],
+    name: 'series1',
+    data: [5, 40, 15, 90, 20, 65, 95],
   },
 ];
 
@@ -82,7 +82,7 @@ const Dashboard: NextPage = () => {
             </Text>
             <Chart type="area" height={160} options={options} series={series} />
           </Box>
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+          <Box p={['6', '8']} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4">
               Taxa de abertura
             </Text>
