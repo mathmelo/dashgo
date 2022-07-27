@@ -2,10 +2,11 @@ import dynamic from 'next/dynamic';
 import type { NextPage } from 'next';
 import type { ApexOptions } from 'apexcharts';
 
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+
 import { Box, Flex, SimpleGrid, Text, theme } from '@chakra-ui/react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const options: ApexOptions = {
   chart: {
@@ -41,7 +42,6 @@ const options: ApexOptions = {
       '2021-03-21T00:00:00.000Z',
       '2021-03-22T00:00:00.000Z',
       '2021-03-23T00:00:00.000Z',
-      '2021-03-24T00:00:00.000Z',
     ],
   },
   fill: {
@@ -58,7 +58,7 @@ const options: ApexOptions = {
 const series = [
   {
     name: 'series1',
-    data: [5, 40, 15, 90, 20, 65, 95],
+    data: [5, 40, 15, 90, 20, 65],
   },
 ];
 
@@ -80,13 +80,27 @@ const Dashboard: NextPage = () => {
             <Text fontSize="lg" mb="4">
               Inscritos da semana
             </Text>
-            <Chart type="area" height={160} options={options} series={series} />
+            <Box width="100%" overflow="hidden">
+              <Chart
+                options={options}
+                series={series}
+                type="area"
+                height={200}
+              />
+            </Box>
           </Box>
           <Box p={['6', '8']} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4">
               Taxa de abertura
             </Text>
-            <Chart type="area" height={160} options={options} series={series} />
+            <Box width="100%" display="block" overflow="hidden">
+              <Chart
+                options={options}
+                series={series}
+                type="area"
+                height={200}
+              />
+            </Box>
           </Box>
         </SimpleGrid>
       </Flex>
