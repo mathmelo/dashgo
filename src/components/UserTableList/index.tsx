@@ -9,7 +9,18 @@ import {
 } from '@chakra-ui/react';
 import TableItem from './TableItem';
 
-const UserTableList = () => {
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+};
+
+interface IUserTableListProps {
+  users: User[] | undefined;
+}
+
+const UserTableList = ({ users }: IUserTableListProps) => {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
@@ -17,7 +28,6 @@ const UserTableList = () => {
 
   return (
     <Table colorScheme="whiteAlpha">
-      {/**HEAD */}
       <Thead>
         <Tr>
           <Th px={['4', '4', '6']} color="gray.300" width="8">
@@ -29,7 +39,9 @@ const UserTableList = () => {
         </Tr>
       </Thead>
       <Tbody>
-        <TableItem isWideVersion={isWideVersion} />
+        {users?.map((user) => (
+          <TableItem key={user.id} {...user} />
+        ))}
       </Tbody>
     </Table>
   );
