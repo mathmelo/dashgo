@@ -10,13 +10,19 @@ import {
   HStack,
   Button,
 } from '@chakra-ui/react';
+
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import { Input } from '../../components/Form/Input';
+
+import { api } from '../../services/api';
+import { queryClient } from '../../services/queryClient';
+import Router from 'next/router';
 
 interface ICreateUserProps {
   email: string;
@@ -41,7 +47,24 @@ const createUserFormSchema = yup
   })
   .required();
 
-const UserList: NextPage = () => {
+const CreateUser: NextPage = () => {
+  const createUser = useMutation(
+    async (user: ICreateUserProps) => {
+      const response = await api.post('/users', {
+        user: {
+          ...user,
+          created_at: new Date(),
+        },
+      });
+
+      return response.data.user;
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['users']);
+      },
+    },
+  );
   const {
     register,
     handleSubmit,
@@ -51,9 +74,9 @@ const UserList: NextPage = () => {
   });
 
   const handleCreateUser: SubmitHandler<ICreateUserProps> = async (values) => {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await createUser.mutateAsync(values);
 
-    console.log(values);
+    Router.push('/users');
   };
 
   return (
@@ -123,4 +146,4 @@ const UserList: NextPage = () => {
   );
 };
 
-export default UserList;
+export default CreateUser;

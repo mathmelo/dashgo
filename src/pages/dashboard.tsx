@@ -80,27 +80,13 @@ const Dashboard: NextPage = () => {
             <Text fontSize="lg" mb="4">
               Inscritos da semana
             </Text>
-            <Box width="100%" overflow="hidden">
-              <Chart
-                options={options}
-                series={series}
-                type="area"
-                height={200}
-              />
-            </Box>
+            <Chart options={options} series={series} type="area" height={200} />
           </Box>
           <Box p={['6', '8']} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4">
               Taxa de abertura
             </Text>
-            <Box width="100%" display="block" overflow="hidden">
-              <Chart
-                options={options}
-                series={series}
-                type="area"
-                height={200}
-              />
-            </Box>
+            <Chart options={options} series={series} type="area" height={200} />
           </Box>
         </SimpleGrid>
       </Flex>
