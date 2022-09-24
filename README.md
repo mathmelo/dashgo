@@ -1,7 +1,6 @@
 <div align="center">
     <img src=".github/logo.svg" height="40"/>
 </div>
-<p align="center">🚀 Dashboard</p>
 
 <div align="center">
  <a href="#-objective">objective</a> •
@@ -22,7 +21,7 @@
 </p>
 
 <div align="left">
-    <img src=".github/mobile.gif" height="300"/>
+    <img src=".github/mobile.gif" height="400"/>
 </div>
 
 <br />
