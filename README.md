@@ -21,6 +21,12 @@
   <img src="./.github/screens.png"  margin-top="400">
 </p>
 
+<div align="left">
+    <img src=".github/mobile.gif" height="300"/>
+</div>
+
+<br />
+
 ## 💡 Objective
 <p>A site that shows a users dashboard.
 The purpose of this project is only for studies on Chakra UI (declarative interface), responsive design, pagination, data fetching and local cache with React query.</p>
